@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Work Records</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+    .form-container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+    }
+
+    .form-label {
+        width: 200px;
+        display: inline-block;
+    }
+
+    .messages {
+        list-style: none;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+    }
+
+    .message {
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+</style>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #3875d7;">
+        <div class="container-fluid">
+            <a class="navbar-brand logo" href="{% url 'index' %}" style="color: white; font-weight:bold">EleRec - Pridať profesiu</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'VeduciHlavneOkno' %}" style="color: white; font-weight: bold">Menu Vedúci</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}" style="color: white; font-weight: bold">Úvodná stránka</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <div class="form-container">
+        <h2 class="mb-4"style="text-align: center">Pridať profesiu</h2>
+    <form method="post" action="{% url 'pridat_profesiu' %}" class="needs-validation" novalidate>
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="mb-3">
+               <label for="profession" class="form-label">Profesia</label>
+                    {{ profession_form.profession_name }}
+            </div>
+            <div class="mb-3">
+               <label for="required_skills" class="form-label">Vyžadované skúsenosti</label>
+                    {{ profession_form.required_skills }}
+            </div>
+            <div class="mb-3">
+               <label for="certifications" class="form-label">Certifikácie</label>
+                    {{ profession_form.certifications }}
+            </div>
+        </div>
+    </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Uložiť</button>
+        </div>
+    </form>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="message">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

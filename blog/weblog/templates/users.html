@@ -1,0 +1,28 @@
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.last_name }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+                <!-- Tlačidlo na export konkrétneho používateľa -->
+                <a href="{% url 'export_userr_to_csv' user.id %}">Export to CSV</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Tlačidlo na export všetkých používateľov -->
+<a href="{% url 'export_all_users_to_csv' %}" class="btn btn-primary">Export All Users to CSV</a>

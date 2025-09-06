@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Všetky Informácie</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #3875d7;">
+        <div class="container-fluid">
+            <a class="navbar-brand logo" href="{% url 'index' %}" style="color: white;font-weight: bold">EleRec - Všetko</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'VeduciHlavneOkno' %}" style="color: white; font-weight: bold">Menu - Vedúci</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}" style="color: white; font-weight: bold">Úvodná stránka</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1>Záznamy práce</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Popis Práce</th>
+                    <th scope="col">Dátum</th>
+                    <th scope="col">Zamestnanec</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for zaznam in zaznamy_userov %}
+                <tr>
+                    <td>{{ zaznam.description }}</td>
+                    <td>{{ zaznam.date_work_record }}</td>
+                    <td>{{ zaznam.id_user }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="container">
+        <div class="py-3" style="background-color: #3875d7">
+            <div class="row">
+                <div class="col-12">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h1>Všetky Úlohy</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Odstranit</th>
+                    <th scope="col">Názov Úlohy</th>
+                    <th scope="col">Termín začatia</th>
+                    <th scope="col">Termín ukončenia</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for uloha in vsetky_ulohy %}
+                <tr>
+                    <td><a href="{% url 'odstranit_task' uloha.pk%}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"> <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/> <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/> </svg></a></td>
+                    <td>{{ uloha.task_name }}</td>
+                    <td>{{ uloha.date_of_creation }}</td>
+                    <td>{{ uloha.date_of_completion }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container">
+        <div class="py-3" style="background-color: #3875d7">
+            <div class="row">
+                <div class="col-12">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h1>Všetci klienti</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Odstrániť</th>
+                    <th scope="col">Meno</th>
+                    <th scope="col">Priezvisko</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Tel. číslo</th>
+                    <th scope="col">Firma</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for klient in vsetci_klienti %}
+                <tr>
+                    <td><a href="{% url 'odstranit_klient' klient.pk%}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"> <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/> <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/> </svg></a></td>
+                    <td>{{ klient.first_name }}</td>
+                    <td>{{ klient.last_name }}</td>
+                    <td>{{ klient.email }}</td>
+                    <td>{{ klient.phone_number }}</td>
+                    <td>{{ klient.company_name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+<div class="container">
+        <div class="py-3" style="background-color: #3875d7">
+            <div class="row">
+                <div class="col-12">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h1>Všetky Materiály</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Odstrániť</th>
+                    <th scope="col">Názov</th>
+                    <th scope="col">Popis Materiálu</th>
+                    <th scope="col">Množstvo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for material in vsetky_materialy %}
+                <tr>
+                    <td><a href="{% url 'odstranit_material' material.pk%}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"> <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/> <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/> </svg></a></td>
+                    <td>{{ material.material_name }}</td>
+                    <td>{{ material.material_description }}</td>
+                    <td>{{ material.material_quantity }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+<div class="container">
+        <div class="py-3" style="background-color: #3875d7">
+            <div class="row">
+                <div class="col-12">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h1>Použité Materiály</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Množstvo</th>
+                    <th scope="col">Pracovný Záznam</th>
+                    <th scope="col">Materiál</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for used_material in pouzite_materialy %}
+                <tr>
+                    <td>{{ used_material.quantity_used }}</td>
+                    <td>{{ used_material.id_work_record }}</td>
+                    <td>{{ used_material.id_materials }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container">
+        <div class="py-3" style="background-color: #3875d7">
+            <div class="row">
+                <div class="col-12">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h1>Všetky Pracovné Miesta</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Odstrániť</th>
+                    <th scope="col">Názov Pracovného Miesta</th>
+                    <th scope="col">Adresa</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for workplace in pracovne_miesta %}
+                <tr>
+                    <td><a href="{% url 'odstranit_workplace' workplace.pk%}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"> <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/> <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/> </svg></a></td>
+                    <td>{{ workplace.construction_name }}</td>
+                    <td>{{ workplace.id_address }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container">
+        <div class="py-3" style="background-color: #3875d7">
+            <div class="row">
+                <div class="col-12">
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="container mt-5">
+    <h1>Všetci Používatelia</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Odstrániť</th>
+                <th scope="col">Meno</th>
+                <th scope="col">Priezvisko</th>
+                <th scope="col">Email</th>
+                <th scope="col">Tel. číslo</th>
+                <th scope="col">Zručnosti</th>
+                <th scope="col">Profesia</th>
+                <th scope="col">Adresa</th>
+                <th scope="col">Rola</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in vsetci_pouzivatelia %}
+            <tr>
+                <td><a href="{% url 'odstranit_user' user.pk%}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"> <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/> <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/> </svg></a></td>
+                <td>{{ user.first_name }}</td>
+                <td>{{ user.last_name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.phone_number }}</td>
+                <td>{{ user.skills }}</td>
+                <td>{{ user.id_profession }}</td>
+                <td>{{ user.id_address }}</td>
+                <td>{{ user.role_user }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+    <div class="container">
+        <div class="py-3" style="background-color: #3875d7">
+            <div class="row">
+                <div class="col-12">
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="container mt-5">
+    <h1>Všetky profesie</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Odstrániť</th>
+                <th scope="col">Profesia</th>
+                <th scope="col">Skúsenosti</th>
+                <th scope="col">Certifikácie</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for profession in vsetky_profesie %}
+            <tr>
+                <td><a href="{% url 'odstranit_profesiu' profession.pk%}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"> <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/> <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/> </svg></a></td>
+                <td>{{ profession.profession_name }}</td>
+                <td>{{ profession.required_skills }}</td>
+                <td>{{ profession.certifications }}</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

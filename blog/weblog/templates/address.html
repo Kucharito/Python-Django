@@ -1,0 +1,18 @@
+
+<html>
+    <body>
+    <h1><a href="{%url 'index'%}">My Blog</a></h1>
+        <h2>{{address.address_name}}</h2>
+        <p>{{address.address_number}}</p>
+    <h3>Users</h3>
+    {% for user in users%}
+        <p>{{user.last_name}},{{user.first_name}}</p>
+    {%endfor%}
+
+    <h3>Add User</h3>
+    <form action="{%url 'adduser' address.id %}" method="address">{%csrf_token%}
+        {{user_form.as_p}}
+        <input type="submit" value="Submit"/>
+    </form>
+    </body>
+</html>
