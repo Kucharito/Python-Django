@@ -49,5 +49,5 @@ It allows you to create, manage, and display blog posts through a web interface.
 
 ## 👨‍💻 Author
 
-Created by **Adam Kuchar**
+Created by **Adam Kuchár**
 Developed as an exercise in the **Django framework**.  
