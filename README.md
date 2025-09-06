@@ -15,22 +15,22 @@ It allows you to create, manage, and display blog posts through a web interface.
    ```bash
    git clone https://github.com/Kucharito/Python-Django.git
    cd Python-Django/DJANGOesteraz/blog
-
+    ```
 
 2. Create and activate a virtual environment:
     ```bash
-        python -m venv venv
-        source venv/bin/activate    # Linux/Mac
-        venv\Scripts\activate # Windows
+    python -m venv venv
+    source venv/bin/activate    # Linux/Mac
+    venv\Scripts\activate # Windows
     ```
 3. Install dependencies:
     ```bash
-        pip install django
+    pip install django
     ```
 
 4. Run database migrations:
     ```bash
-        python manage.py migrate
+    python manage.py migrate
     ```
 
 5. Start the development server:
