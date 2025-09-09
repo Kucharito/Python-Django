@@ -47,7 +47,19 @@ It allows you to create, manage, and display blog posts through a web interface.
 - Display of blog posts on the homepage 
 - Administration interface (Django Admin)  
 
+## 📸 Screenshots
+
+<p align="center">
+  <img src="screenshots/Screenshot_1.png" alt="Menu" width="auto"/>
+  <img src="screenshots/Screenshot_2.png" alt="Login" width="auto"/>
+  <img src="screenshots/Screenshot_3.png" alt="Menu employee" width="auto"/>
+  <img src="screenshots/Screenshot_4.png" alt="Work records" width="auto"/>
+  <img src="screenshots/Screenshot_5.png" alt="Admin panel" width="auto">
+</p>
+
+
 ## 👨‍💻 Author
 
 Created by **Adam Kuchár**
+
 Developed as an exercise in the **Django framework**.  
